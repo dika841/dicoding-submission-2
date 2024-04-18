@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <title>Bookshelf</title>
+  </head>
+  <body>
+    <main>
+      <h1>Bookshelf</h1>
+      <form class="form" action="#" id="form">
+        <div class="input-container">
+          <label for="title">Tambahkan Judul buku yang akan dibaca :</label>
+          <input type="text" name="title" id="title" placeholder="Judul Buku" />
+          <input id="add-book" type="submit" value="Add Book" name="submit" class="btn-submit"/>
+        </div>
+      </form>
+
+      <div class="container">
+        <div class="bookshelf">
+          <h2>Sedang Dibaca</h2>
+          <ul class="list-book" id="currently-reading"></ul>
+        </div>
+
+        <div class="bookshelf">
+          <h2>Selesai Dibaca</h2>
+          <ul class="list-book" id="finished-reading">
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script src="../assets/js/script.js" type="text/javascript"></script>
+  </body>
+</html>

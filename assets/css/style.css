@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  padding: 4rem;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#add-book {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0f4c75;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-bottom: 16px;
+}
+
+#add-book:hover {
+  background-color: #54afec;
+  color: #0f4c75;
+}
+
+.bookshelf {
+  border: 2px solid black;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  padding: 8px;
+  background-color: beige;
+  border-radius: 8px;
+}
+
+li {
+  list-style: none;
+}
+
+.list-book {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+li > .item-title {
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 8px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+form > .input-container > label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+form > .input-container > input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  border: 1px solid gray;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-bottom: 4px;
+}
+
+.check-button {
+  width: 24px;
+  height: 24px;
+  background: url("../img/check-outline.svg");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}
+
+.check-button:hover {
+  background: url("../img/check-outline.svg");
+  background-size: contain;
+}
+
+.trash-button {
+  width: 24px;
+  height: 24px;
+  background: url("../img/trash-outline.svg");
+  background-size: contain;
+  margin-left: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.trash-button:hover {
+  background: url("../img/trash-fill.svg");
+  background-size: contain;
+}
+
+.undo-button {
+  width: 24px;
+  height: 24px;
+  background: url("../img/undo-ouline.svg");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}
+
+.undo-button:hover {
+  background: url("../img/undo-ouline.svg");
+  background-size: contain;
+}
+
+.check-button:focus,
+.trash-button {
+  outline: none;
+}
+
+.show {
+    width: 250px;
+    height: 50px;
+    position: fixed;
+    right: 10px;
+    top: 50px;
+    border-radius: 8px;
+    transition: opacity 0.5s ease-in;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.toast-message{
+    text-align: center;
+    font-size: medium;
+    color: white;
+    font-weight: 500;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+  form > .input-container > label{
+    font-size: 14px;
+  }
+}
