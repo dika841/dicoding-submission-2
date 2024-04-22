@@ -13,15 +13,15 @@
         <div class="input-container">
           <div class="item-container">
             <label for="title">Judul buku :</label>
-            <input type="text" name="title" id="title" placeholder="Judul Buku" />
+            <input type="text" name="title" id="title" placeholder="Judul Buku" required/>
           </div>
           <div class="item-container">
             <label for="title">Author :</label>
-            <input type="text" name="author" id="author" placeholder="Masukkan Nama Author" />
+            <input type="text" name="author" id="author" placeholder="Masukkan Nama Author" required/>
           </div>
           <div class="item-container">
-            <label for="title">Years :</label>
-            <input type="number" name="years" id="years" placeholder="Tahun Terbit" />
+            <label for="title">Year :</label>
+            <input type="number" name="year" id="year" placeholder="Tahun Terbit" required/>
           </div>
           <button id="add-book" type="submit"  name="submit" class="btn-submit">Add Book</button>
         </div>
@@ -30,7 +30,7 @@
       <div class="container">
         <div class="bookshelf">
           <div class="search-wrapper">
-            <h2>Sedang Dibaca</h2>
+            <h2>Belum Selesai Dibaca</h2>
             <input type="search" id="search-current-reading" class="search" placeholder="Cari">
           </div>
           <ul class="list-book" id="currently-reading" data-current-reading></ul>

@@ -30,6 +30,9 @@ h1 {
   align-items: center;
   justify-content: space-between;
 }
+.search-wrapper > h2{
+  font-size: large;
+}
 .search-wrapper input[type='search']{
   width: 50%;
   padding: 8px;
