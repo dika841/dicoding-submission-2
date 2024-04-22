@@ -1,6 +1,9 @@
 const bookList = [];
 const RENDER_BOOK = "render-book";
 const SAVED_BOOK = "saved-book";
+const searchInputCurrentReading = document.getElementById('search-current-reading');
+const searchInputFinishReading = document.getElementById('search-finished-reading');
+
 document.addEventListener("DOMContentLoaded", () => {
   const submitForm = document.getElementById("form");
   submitForm.addEventListener("submit", (event) => {
@@ -10,12 +13,38 @@ document.addEventListener("DOMContentLoaded", () => {
   if (isStorageExist()) {
     loadBooksData();
   }
+
 });
 
+searchInputCurrentReading.addEventListener('input', (e)=> {
+  const value = e.target.value.toLowerCase();
+  const currentReading = document.querySelector("[data-current-reading]");
+  const books = bookList.filter(book => !book.isCompleted && (book.title.toLowerCase().includes(value) || book.author.toLowerCase().includes(value)));
+  currentReading.innerHTML = books.length ? "" : `<p class="item-title">Tidak ada buku yang cocok dengan pencarian</p>`;
+  for (const book of books) {
+    currentReading.append(displayBook(book));
+  }
+  
+})
+
+searchInputFinishReading.addEventListener('input', (e)=> {
+  const value = e.target.value.toLowerCase();
+  const finishedReading = document.querySelector("[data-finished-reading]");
+  const books = bookList.filter(book => book.isCompleted && (book.title.toLowerCase().includes(value) || book.author.toLowerCase().includes(value)));
+
+  finishedReading.innerHTML = books.length ? "" : `<p class="item-title">Tidak ada buku yang cocok dengan pencarian</p>`;
+  for (const book of books) {
+    finishedReading.append(displayBook(book));
+  }
+})
 const addBook = () => {
   const title = document.getElementById("title").value;
-  bookList.push({ id: generateId(), title, isCompleted: false });
+  const author = document.getElementById("author").value;
+  const years = document.getElementById("years").value;
+  bookList.push({ id: generateId(), title,author,years, isCompleted: false });
   document.getElementById("title").value = "";
+  document.getElementById("author").value = "";
+  document.getElementById("years").value = "";
   document.dispatchEvent(new Event(RENDER_BOOK));
   saveBooksData();
   showToast("success", "Berhasil Menambahkan Buku");
@@ -24,20 +53,26 @@ const generateId = () => {
   return Math.floor(Math.random() * 1000000);
 };
 
-const generateBook = (id, title, isCompleted) => {
-  return {
-    id,
-    title,
-    isCompleted,
-  };
-};
+
 const displayBook = (bookObject) => {
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("item-title");
+  const otherContainer = document.createElement("div");
+  otherContainer.classList.add("item-other");
 
+  
   const bookTitle = document.createElement("p");
   bookTitle.textContent = bookObject.title;
-  titleContainer.append(bookTitle);
+  otherContainer.append(bookTitle);
+
+  const author = document.createElement("small");
+  author.textContent = bookObject.author;
+  otherContainer.append(author);
+
+  titleContainer.append(otherContainer);
+  const years = document.createElement("small");
+  years.textContent = bookObject.years;
+  otherContainer.append(years);
 
   const container = document.createElement("li");
   container.classList.add("item");
@@ -71,6 +106,7 @@ const displayBook = (bookObject) => {
   }
 
   container.append(titleContainer);
+
   return container;
 };
 
@@ -163,4 +199,6 @@ const showToast = (type, message) => {
     toast.remove();
   }, 2000);
 };
+
+
 
